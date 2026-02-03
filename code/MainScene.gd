@@ -23,5 +23,6 @@ func _ready() -> void:
 func _on_input_text_submitted(input_text: String) -> void:
 	if input_text.is_empty():
 		return
+	output_ui.post_message(Types.wrap_input_text("> " + input_text))
 	var response = command_processor.process_command(input_text)
 	output_ui.create_response (input_text, response)
