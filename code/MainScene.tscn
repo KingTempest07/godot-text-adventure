@@ -1,13 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://dm45akoq5wsk3"]
+[gd_scene format=3 uid="uid://dm45akoq5wsk3"]
 
-[ext_resource type="Script" path="res://MainScene.gd" id="1_vxoxk"]
-[ext_resource type="Script" path="res://Player.gd" id="2_weyrh"]
-[ext_resource type="Script" path="res://CommandProcessor.gd" id="3_4s3ea"]
-[ext_resource type="Script" path="res://rooms/RoomManager.gd" id="4_als22"]
+[ext_resource type="Script" uid="uid://gkbs62a7jakk" path="res://MainScene.gd" id="1_vxoxk"]
+[ext_resource type="Script" uid="uid://cn5hcfqhfccku" path="res://Player.gd" id="2_weyrh"]
+[ext_resource type="Script" uid="uid://xa8gxqhy8gkd" path="res://CommandProcessor.gd" id="3_4s3ea"]
+[ext_resource type="Script" uid="uid://c0esgfnrng5x2" path="res://rooms/RoomManager.gd" id="4_als22"]
 [ext_resource type="PackedScene" uid="uid://onchyq3l7cgs" path="res://rooms/Room.tscn" id="5_vs1j2"]
 [ext_resource type="PackedScene" uid="uid://bwt3m8uhloc4y" path="res://OutputUI.tscn" id="6_gm0c2"]
 [ext_resource type="FontFile" uid="uid://wgide8wptse" path="res://fonts/IBMPlexMono-Regular.ttf" id="7_5makc"]
-[ext_resource type="Script" path="res://input/Input.gd" id="8_x1j8v"]
+[ext_resource type="Script" uid="uid://bg545ebsmcn4l" path="res://input/Input.gd" id="8_x1j8v"]
 [ext_resource type="PackedScene" uid="uid://oapchy25kr5j" path="res://SidePanel.tscn" id="9_5ng8r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wv30w"]
@@ -20,7 +20,7 @@ bg_color = Color(0.265361, 0.265361, 0.26536, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5qwnq"]
 
-[node name="MainScene" type="Control"]
+[node name="MainScene" type="Control" unique_id=917469029]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,16 +29,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vxoxk")
 
-[node name="Player" type="Node" parent="."]
+[node name="Player" type="Node" parent="." unique_id=1232165401]
 script = ExtResource("2_weyrh")
 
-[node name="CommandProcessor" type="Node" parent="."]
+[node name="CommandProcessor" type="Node" parent="." unique_id=1287049742]
 script = ExtResource("3_4s3ea")
 
-[node name="RoomManager" type="Node" parent="."]
+[node name="RoomManager" type="Node" parent="." unique_id=984031575]
 script = ExtResource("4_als22")
 
-[node name="HouseRoom" parent="RoomManager" instance=ExtResource("5_vs1j2")]
+[node name="HouseRoom" parent="RoomManager" unique_id=2027545318 instance=ExtResource("5_vs1j2")]
 offset_left = 7.0
 offset_top = -391.0
 offset_right = 391.0
@@ -46,7 +46,7 @@ offset_bottom = -99.0
 room_name = "House"
 room_description = "a house you do not recognize."
 
-[node name="FrontPorch" parent="RoomManager" instance=ExtResource("5_vs1j2")]
+[node name="FrontPorch" parent="RoomManager" unique_id=581238276 instance=ExtResource("5_vs1j2")]
 offset_left = 455.0
 offset_top = -383.0
 offset_right = 839.0
@@ -54,7 +54,7 @@ offset_bottom = -91.0
 room_name = "Front Porch"
 room_description = "a ramshackle porch."
 
-[node name="ShedRoom" parent="RoomManager" instance=ExtResource("5_vs1j2")]
+[node name="ShedRoom" parent="RoomManager" unique_id=635336629 instance=ExtResource("5_vs1j2")]
 offset_left = 464.0
 offset_top = -744.0
 offset_right = 848.0
@@ -62,7 +62,7 @@ offset_bottom = -452.0
 room_name = "a shed"
 room_description = "a dilapidated old garden shed."
 
-[node name="Background" type="PanelContainer" parent="."]
+[node name="Background" type="PanelContainer" parent="." unique_id=910945927]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -71,44 +71,44 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wv30w")
 
-[node name="MarginContainer" type="MarginContainer" parent="Background"]
+[node name="MarginContainer" type="MarginContainer" parent="Background" unique_id=57587668]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Columns" type="HBoxContainer" parent="Background/MarginContainer"]
+[node name="Columns" type="HBoxContainer" parent="Background/MarginContainer" unique_id=54105919]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Rows" type="VBoxContainer" parent="Background/MarginContainer/Columns"]
+[node name="Rows" type="VBoxContainer" parent="Background/MarginContainer/Columns" unique_id=1032780565]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 20
 
-[node name="OutputPanel" type="PanelContainer" parent="Background/MarginContainer/Columns/Rows"]
+[node name="OutputPanel" type="PanelContainer" parent="Background/MarginContainer/Columns/Rows" unique_id=1508903306]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="OutputUI" parent="Background/MarginContainer/Columns/Rows/OutputPanel" instance=ExtResource("6_gm0c2")]
+[node name="OutputUI" parent="Background/MarginContainer/Columns/Rows/OutputPanel" unique_id=1417187846 instance=ExtResource("6_gm0c2")]
 layout_mode = 2
 
-[node name="InputArea" type="PanelContainer" parent="Background/MarginContainer/Columns/Rows"]
+[node name="InputArea" type="PanelContainer" parent="Background/MarginContainer/Columns/Rows" unique_id=671755812]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w7s2a")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer/Columns/Rows/InputArea"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer/Columns/Rows/InputArea" unique_id=960728989]
 layout_mode = 2
 
-[node name="Prompt" type="Label" parent="Background/MarginContainer/Columns/Rows/InputArea/HBoxContainer"]
+[node name="Prompt" type="Label" parent="Background/MarginContainer/Columns/Rows/InputArea/HBoxContainer" unique_id=313049752]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("7_5makc")
 theme_override_font_sizes/font_size = 28
 text = " > "
 
-[node name="Input" type="LineEdit" parent="Background/MarginContainer/Columns/Rows/InputArea/HBoxContainer"]
+[node name="Input" type="LineEdit" parent="Background/MarginContainer/Columns/Rows/InputArea/HBoxContainer" unique_id=1710385962]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("7_5makc")
@@ -116,9 +116,10 @@ theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxEmpty_2xcrq")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5qwnq")
 max_length = 48
+keep_editing_on_text_submit = true
 script = ExtResource("8_x1j8v")
 
-[node name="SidePanel" parent="Background/MarginContainer/Columns" instance=ExtResource("9_5ng8r")]
+[node name="SidePanel" parent="Background/MarginContainer/Columns" unique_id=590520307 instance=ExtResource("9_5ng8r")]
 layout_mode = 2
 
 [connection signal="text_submitted" from="Background/MarginContainer/Columns/Rows/InputArea/HBoxContainer/Input" to="." method="_on_input_text_submitted"]
