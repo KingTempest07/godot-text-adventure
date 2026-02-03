@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BookItem" format=3 uid="uid://caugcq12lv1x6"]
+
+[ext_resource type="Script" uid="uid://cjgl67e8mobid" path="res://items/BookItem.gd" id="1_edfxr"]
+
+[resource]
+script = ExtResource("1_edfxr")
+book_text = "Across my life, I have heard many sayings, cited from the same source. Off the top of my head:
+
+\"Yet by midnight, all returns to the void...\"
+\"At midday, the foliage rejoices...\"
+\"When the sun rises, the sky returns its hue...\"
+\"As night falls, a blood moon rises...\"
+
+If you, dear reader, know of the source, please contact me. (I would be glad to offer a reward!)"
+item_name = "Colors"
+item_type = 2
+metadata/_custom_type_script = "uid://cjgl67e8mobid"

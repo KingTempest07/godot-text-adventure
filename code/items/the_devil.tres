@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BookItem" format=3 uid="uid://daj2hlw7cxi6f"]
+
+[ext_resource type="Script" uid="uid://cjgl67e8mobid" path="res://items/BookItem.gd" id="1_0xnho"]
+
+[resource]
+script = ExtResource("1_0xnho")
+book_text = "Calling a being \"The Devil\" is not quite as simple as you might think. In fact, there are many devils to be found. Most devils surround themselves in their own personal voids, determined to recreate what they read in their personal libraries. 
+
+I have been so lucky as to meet a few, and this is what I have found:
+\"Ingit\": Quite charming! In fact, she took me out on a date the day we met! She is obsessed with lights!
+\"Porteng\": Oddly sensitive. Didn't like my attitude, despite it being quite regular for us humans. I often caught him with his head deep into his books (even more than others devils!).
+\"Orith\": Somewhat scientific? He toyed with me a lot, always interested and keeping an eye on how I'd react. For some reason, he always tried to show me this one chalice he owned?
+\"Wrof\": Don't go near this one!!! They are out for blood and will spend no time to hunt you down!
+
+If there is one thing you take from this book, let it be this: 
+Don't fuck with Wrof."
+item_name = "The Devil"
+item_type = 2
+metadata/_custom_type_script = "uid://cjgl67e8mobid"

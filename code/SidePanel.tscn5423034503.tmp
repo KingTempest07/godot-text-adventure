@@ -20,11 +20,10 @@ theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer" unique_id=349316457]
-custom_minimum_size = Vector2(512, 0)
 layout_mode = 2
 
 [node name="Rows" type="VBoxContainer" parent="MarginContainer/ScrollContainer" unique_id=228223781]
-custom_minimum_size = Vector2(512, 0)
+custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
 
@@ -43,9 +42,8 @@ fit_content = true
 [node name="RoomNameLabel" type="RichTextLabel" parent="MarginContainer/ScrollContainer/Rows/RoomArea" unique_id=731669055]
 clip_contents = false
 layout_mode = 2
-theme_override_colors/default_color = Color(0.97, 0.93799, 0.7954, 1)
 theme_override_fonts/normal_font = ExtResource("2_jfemf")
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 text = "name of the room"
 fit_content = true
@@ -64,15 +62,6 @@ size_flags_vertical = 3
 
 [node name="ExitLabel" type="RichTextLabel" parent="MarginContainer/ScrollContainer/Rows/ListArea" unique_id=264849002]
 layout_mode = 2
-theme_override_colors/default_color = Color(0.96862745, 0.9372549, 0.79607844, 1)
-theme_override_fonts/normal_font = ExtResource("2_jfemf")
-theme_override_font_sizes/normal_font_size = 24
-bbcode_enabled = true
-text = "You can go directions"
-fit_content = true
-
-[node name="ItemsLabel" type="RichTextLabel" parent="MarginContainer/ScrollContainer/Rows/ListArea" unique_id=1711625051]
-layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("2_jfemf")
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
@@ -81,9 +70,8 @@ fit_content = true
 
 [node name="ItemsText" type="RichTextLabel" parent="MarginContainer/ScrollContainer/Rows/ListArea" unique_id=230503250]
 layout_mode = 2
-theme_override_colors/default_color = Color(0.96862745, 0.9372549, 0.79607844, 1)
 theme_override_fonts/normal_font = ExtResource("2_jfemf")
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 text = "things in the room."
 fit_content = true
@@ -98,9 +86,8 @@ fit_content = true
 
 [node name="NPCText" type="RichTextLabel" parent="MarginContainer/ScrollContainer/Rows/ListArea" unique_id=45177672]
 layout_mode = 2
-theme_override_colors/default_color = Color(0.96862745, 0.9372549, 0.79607844, 1)
 theme_override_fonts/normal_font = ExtResource("2_jfemf")
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 text = "characters here."
 fit_content = true
@@ -115,9 +102,8 @@ fit_content = true
 
 [node name="InventoryText" type="RichTextLabel" parent="MarginContainer/ScrollContainer/Rows/ListArea" unique_id=880786353]
 layout_mode = 2
-theme_override_colors/default_color = Color(0.96862745, 0.9372549, 0.79607844, 1)
 theme_override_fonts/normal_font = ExtResource("2_jfemf")
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 text = "things you carry."
 fit_content = true

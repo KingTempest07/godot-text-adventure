@@ -11,7 +11,7 @@ var max_scroll_length := 0
 
 @onready var history_rows = $Rows/Scroll/HistoryRows
 @onready var scroll = $Rows/Scroll
-@onready var scroll_bar = scroll.get_v_scroll_bar()
+@onready var scroll_bar: VScrollBar = scroll.get_v_scroll_bar()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -47,7 +47,7 @@ func _on_scroll_bar_changed():
 		scroll.scroll_vertical = max_scroll_length
 
 func _delete_history_beyond_limit():
-	if history_rows.get_child_count() > max_lines_remembered:
+	if max_lines_remembered != -1 and history_rows.get_child_count() > max_lines_remembered:
 		var rows_to_forget = history_rows.get_child_count() - max_lines_remembered
 		for i in range(rows_to_forget):
 			history_rows.get_child(i).queue_free()

@@ -25,42 +25,61 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vxoxk")
+intro_text = "Out of nowhere, you appear in a pitch-black room, only illuminated in certain areas by faint red glows of undeterminable origin. The air reeks of death, and no sound can be heard. You have no recollection of anything about yourself nor of your coming here. What you do know, however, is that this place gives you the creeps.
+
+As soon as you begin to look around, a booming voice echoes from inside your skull: "
+devil_intro_text = "Welcome to the place of your demise. There is no escape from this place: only death awaits you here. Yet, if you so please, take a gander at my chalices in the other room! And feel free to have a sip.
+
+I will be watching from above, so don't try anything stupid."
 
 [node name="Player" type="Node" parent="." unique_id=1232165401]
+unique_name_in_owner = true
 script = ExtResource("2_weyrh")
 
 [node name="CommandProcessor" type="Node" parent="." unique_id=1287049742]
+unique_name_in_owner = true
 script = ExtResource("3_4s3ea")
 
 [node name="RoomManager" type="Node" parent="." unique_id=984031575]
+unique_name_in_owner = true
 script = ExtResource("4_als22")
 
-[node name="HouseRoom" parent="RoomManager" unique_id=2027545318 instance=ExtResource("5_vs1j2")]
-offset_left = 7.0
-offset_top = -391.0
-offset_right = 391.0
-offset_bottom = -99.0
-room_name = "House"
-room_description = "a house you do not recognize."
+[node name="Entrance" parent="RoomManager" unique_id=1197468203 instance=ExtResource("5_vs1j2")]
+offset_left = 646.0
+offset_top = -941.0
+offset_right = 1030.0
+offset_bottom = -649.0
+room_name = "the Entrance"
+room_description = "the place in which you were summoned."
 
-[node name="FrontPorch" parent="RoomManager" unique_id=581238276 instance=ExtResource("5_vs1j2")]
-offset_left = 455.0
-offset_top = -383.0
-offset_right = 839.0
-offset_bottom = -91.0
-room_name = "Front Porch"
-room_description = "a ramshackle porch."
+[node name="Library" parent="RoomManager" unique_id=1651662790 instance=ExtResource("5_vs1j2")]
+offset_left = 649.0
+offset_top = -1263.0
+offset_right = 1033.0
+offset_bottom = -971.0
+room_name = "the Library"
+room_description = "a dusty and abnormally well-lit room, adorned with vast shelves of ancient-looking books. You get the feeling that this place has the answers to all of your questions..."
 
-[node name="ShedRoom" parent="RoomManager" unique_id=635336629 instance=ExtResource("5_vs1j2")]
-offset_left = 464.0
-offset_top = -744.0
-offset_right = 848.0
-offset_bottom = -452.0
-room_name = "a shed"
-room_description = "a dilapidated old garden shed."
+[node name="Chalices" parent="RoomManager" unique_id=460338749 instance=ExtResource("5_vs1j2")]
+offset_left = 1053.0
+offset_top = -936.0
+offset_right = 1437.0
+offset_bottom = -644.0
+room_name = "the Chalices"
+room_description = "one of the few illuminated areas in this dark void. Visible to you is a pedestal solely intended to house five chalices of varying liquids."
+
+[node name="Bodies" parent="RoomManager" unique_id=1283748211 instance=ExtResource("5_vs1j2")]
+offset_left = 238.0
+offset_top = -940.0
+offset_right = 622.0
+offset_bottom = -648.0
+room_name = "the Bodies"
+room_description = "one of the few illuminated areas in this dark void. Visible to you is an array of three human corpses, each bearing a weapon of sorts. "
 
 [node name="Background" type="PanelContainer" parent="." unique_id=910945927]
 layout_mode = 1
@@ -93,6 +112,7 @@ size_flags_vertical = 3
 
 [node name="OutputUI" parent="Background/MarginContainer/Columns/Rows/OutputPanel" unique_id=1417187846 instance=ExtResource("6_gm0c2")]
 layout_mode = 2
+max_lines_remembered = -1
 
 [node name="InputArea" type="PanelContainer" parent="Background/MarginContainer/Columns/Rows" unique_id=671755812]
 custom_minimum_size = Vector2(0, 64)

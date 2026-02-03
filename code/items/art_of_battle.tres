@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BookItem" format=3 uid="uid://bi23lodn7css3"]
+
+[ext_resource type="Script" uid="uid://cjgl67e8mobid" path="res://items/BookItem.gd" id="1_l8eup"]
+
+[resource]
+script = ExtResource("1_l8eup")
+book_text = "In battle, there tends to be four styles: the berserker, ranger, paladin, and alchemist. Of the four, the paladin tends most effective, whereas the others serve fairly equal roles. That is, if they were equally balanced in numbers. The alchemist is the rarest yet strongest of the bunch, as access to magic is a prerequisite to becoming one; therefore, it is quite common that those capable tend to absorb themselves in alchemy and focus on nothing else. "
+item_name = "Art of Battle"
+item_type = 2
+metadata/_custom_type_script = "uid://cjgl67e8mobid"

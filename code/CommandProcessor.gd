@@ -18,22 +18,20 @@ func process_command(input: String) -> String:
 	var first_word = words[0].to_lower()
 	var second_word = ""
 	if words.size() > 1:
-		second_word = words[1].to_lower()
+		second_word = input.lstrip(words[0]).lstrip(" ").to_lower()
 	match first_word:
 		"go": 
 			return go(second_word)
 		"take":
 			return take(second_word)
-		"drop":
-			return drop(second_word)
 		"inventory":
 			return inventory()
-		"use":
-			return use(second_word)
-		"talk":
-			return talk(second_word)
-		"give":
-			return give (second_word)
+		"read":
+			return read(second_word)
+		"drink":
+			return drink(second_word)
+		"offer":
+			return offer (second_word)
 		"help":
 			return help()
 		"quit":
@@ -50,6 +48,12 @@ func take(item_name: String) -> String:
 		if item_name.to_lower() == item.item_name.to_lower():
 			player.take_item(item)
 			current_room.remove_item(item)
+			if item is BookItem:
+				return "You take the book \"%s\"." % item.item_name
+			if item.item_type == Types.ItemTypes.WEAPON:
+				for item1 in current_room.items:
+					current_room.remove_item(item1)
+				return "You take the %s. Mysteriously, all the other weapons in the room disappeared. Did you make the right choice?" % item_name
 			return "You take the " + item_name + "."
 			
 	return "There is no " + item_name + " here."
@@ -85,64 +89,56 @@ func go (direction: String) -> String:
 	else:
 		return "You cannot go that way."
 	
-func use(item_name: String) -> String:
+func read(item_name: String) -> String:
 	if item_name == "":
-		return "What did you want to use?"
+		return "What book did you want to read?"
 	
 	for item in player.inventory:
 		if item_name.to_lower() == item.item_name.to_lower():
 			match item.item_type:
-				Types.ItemTypes.KEY:
-					for exit in current_room.exits.values():
-						if exit == item.use_value:
-							exit.is_locked = false
-							player.drop_item(item)
-							return "You use your %s to unlock the %s." % [item_name, exit.get_destination_room(current_room).room_name]
-					return "You can't use that here."
+				Types.ItemTypes.BOOK:
+					return "You read \"%s\":\n\n%s" % [item.item_name, Types.wrap_text((item as BookItem).book_text, Types.COLOR_SPEECH)]
+				_: 
+					return "Invalid item type " + item.item_type
+	return "You do not have a book named \"" + item_name +"\"."
+	
+func drink(item_name: String) -> String:
+	if item_name == "":
+		return "What did you want to drink?"
+	
+	for item in player.inventory:
+		if item_name.to_lower() == item.item_name.to_lower():
+			match item.item_type:
+				Types.ItemTypes.CHALICE:
+					player.drop_item(item)
+					player.failed_chalice = Player.correct_chalices_order[player.next_chalice_index] != item.item_name
+					player.next_chalice_index += 1
+					return "You drank the %s." % item.item_name
 				_: 
 					return "Invalid item type " + item.item_type
 	return "You do not have the " + item_name +"."
 	
 	
-func talk(character: String) -> String:
-	if character == "":
-		return "Who did you want to talk to?"
-	for npc in current_room.npcs:
-		if npc.npc_name.to_lower() == character.to_lower():
-			var dialog = npc.post_quest_dialog if npc.has_quest_item else npc.initial_dialog
-			return dialog
-	return "There is no one here by that name."
-	
-	
-func give(item_name: String) -> String:
+func offer(item_name: String) -> String:
 	if item_name == "":
-		return "What did you want to give?"
+		return "What did you want to offer?"
 	
-	var has_item := false
 	for item in player.inventory:
 		if item_name.to_lower() == item.item_name.to_lower():
-			has_item = true
+			if item.item_name == "white chalice":
+				player.offer_state = 2
+			elif item.item_type != Types.ItemTypes.WEAPON:
+				return "You must offer a valid weapon."
+			else:
+				player.offer_state = 1
+			return "You offer the %s to the devil." % item_name
 	
-	if not has_item:
-		return  "You do not have the " + item_name +"."
+	return  "You do not have the " + item_name +"."
 	
-	for npc in current_room.npcs:
-		# Question: what is the disadvantage of using the "and" here?
-		if npc.quest_item != null and npc.quest_item.item_name.to_lower() == item_name.to_lower():
-			npc.has_quest_item = true
-			if npc.quest_reward != null:
-				# TODO: anyhing with this
-				print (npc.quest_reward)
-				var reward = npc.quest_reward
-				if "is_locked" in reward: # is there an is_locked property in this object
-					pass # this is an exit
-			player.drop_item (npc.quest_item)
-			return "You give the %s to %s." % [item_name, npc.npc_name]
-	return "No one here wants the " + item_name +"."
 	
 func help() -> String:
 	return "Commands are one or two words. Available commands are: \n   go [location], \n   take [item],"  \
-		+ "\n   drop [item],\n   use [item],\n   talk [character],\n   give [item],\n   inventory,\n   help"
+		+ "\n   read [item],\n   drink [item],\n   offer [item],\n   inventory,\n   help"
 	
 func change_room(new_room: Room) -> String:
 	current_room = new_room

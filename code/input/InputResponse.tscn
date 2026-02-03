@@ -1,25 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://2q444q7bdpsj"]
+[gd_scene format=3 uid="uid://2q444q7bdpsj"]
 
-[ext_resource type="Script" path="res://input/InputResponse.gd" id="1_2m4ha"]
+[ext_resource type="Script" uid="uid://bklluhgq3jkur" path="res://input/InputResponse.gd" id="1_2m4ha"]
 [ext_resource type="FontFile" uid="uid://wgide8wptse" path="res://fonts/IBMPlexMono-Regular.ttf" id="1_hwujj"]
 [ext_resource type="PackedScene" uid="uid://cfps05wfonu1j" path="res://input/Response.tscn" id="3_si61p"]
 
-[node name="InputResponse" type="VBoxContainer"]
+[node name="InputResponse" type="VBoxContainer" unique_id=205002745]
 size_flags_horizontal = 3
 script = ExtResource("1_2m4ha")
 
-[node name="Rows" type="VBoxContainer" parent="."]
+[node name="Rows" type="VBoxContainer" parent="." unique_id=406337747]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="InputHistory" type="Label" parent="Rows"]
+[node name="InputHistory" type="Label" parent="Rows" unique_id=1485026804]
 layout_mode = 2
-size_flags_vertical = 6
 theme_override_colors/font_color = Color(0.713518, 0.713518, 0.713518, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("1_hwujj")
 theme_override_font_sizes/font_size = 24
-text = "  > You said:"
 
-[node name="Response" parent="Rows" instance=ExtResource("3_si61p")]
-custom_minimum_size = Vector2(30, 0)
+[node name="Response" parent="Rows" unique_id=1511080319 instance=ExtResource("3_si61p")]
 layout_mode = 2
+text = ""
